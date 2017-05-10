@@ -1,0 +1,1322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>OpenLab: open tools for physicists</title>
+<!-- 2017-05-10 Wed 14:42 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Andrea Miglietta" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">OpenLab: open tools for physicists</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Presentation of me:</a></li>
+<li><a href="#sec-1-2">1.2. Goals of this conference:</a></li>
+<li><a href="#sec-1-3">1.3. Quick review of things I'd like to assume you know:</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. Open a terminal</a></li>
+<li><a href="#sec-1-3-2">1.3.2. Open a file with an editor of your choice</a></li>
+<li><a href="#sec-1-3-3">1.3.3. Elementary commands:</a></li>
+<li><a href="#sec-1-3-4">1.3.4. Standard input, output and error</a></li>
+<li><a href="#sec-1-3-5">1.3.5. Difference between absolute and relative path</a></li>
+<li><a href="#sec-1-3-6">1.3.6. How to get help?</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4. How can I improve my skills?</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Start learning Bash</a>
+<ul>
+<li><a href="#sec-2-1">2.1. What is Bash?</a></li>
+<li><a href="#sec-2-2">2.2. Why using Bash?</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. How to verify which shell you are using?</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">2.3. Bash scripting</a>
+<ul>
+<li><a href="#sec-2-3-1">2.3.1. What is a script?</a></li>
+<li><a href="#sec-2-3-2">2.3.2. How can I run my script?</a></li>
+<li><a href="#sec-2-3-3">2.3.3. First step: Hello World!</a></li>
+<li><a href="#sec-2-3-4">2.3.4. Why is important quoting variables?</a></li>
+<li><a href="#sec-2-3-5">2.3.5. Command substitutuion: backticks vs $()</a></li>
+<li><a href="#sec-2-3-6">2.3.6. Why is dangerous shell scripting?</a></li>
+<li><a href="#sec-2-3-7">2.3.7. Use bashisms: use Bash, don't half-use it.</a></li>
+<li><a href="#sec-2-3-8">2.3.8. How to debug a script:</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">2.4. 7 personal advice to write a good script:</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. One step further: how to schedule our operations</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Cron:</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. What is cron?</a></li>
+<li><a href="#sec-3-1-2">3.1.2. How can I schedule use cron?</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. Systemd timers:</a>
+<ul>
+<li><a href="#sec-3-2-1">3.2.1. What is a systemd timer?</a></li>
+<li><a href="#sec-3-2-2">3.2.2. How can I create a timer?</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">3.3. Exercises:</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. How to 'rename' large number of files?</a></li>
+<li><a href="#sec-5">5. How to 'find' and do operations over multiple files?</a></li>
+<li><a href="#sec-6">6. Text processing by examples: awk</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-6-0-1">6.0.1. The worst thing you can do with Awk! (imho)</a></li>
+<li><a href="#sec-6-0-2">6.0.2. Print lines based on pattern</a></li>
+<li><a href="#sec-6-0-3">6.0.3. Print lines in range</a></li>
+<li><a href="#sec-6-0-4">6.0.4. Remove (non consecutive) duplicated lines</a></li>
+<li><a href="#sec-6-0-5">6.0.5. Find and replace</a></li>
+<li><a href="#sec-6-0-6">6.0.6. Print intersection of two files</a></li>
+<li><a href="#sec-6-0-7">6.0.7. Parse a CSV file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Project example: dice rolling simulations</a></li>
+<li><a href="#sec-8">8. Not covered by this talk but truly useful and important:</a>
+<ul>
+<li><a href="#sec-8-1">8.1. ssh</a>
+<ul>
+<li><a href="#sec-8-1-1">8.1.1. Generate public/private key pair for authentication</a></li>
+<li><a href="#sec-8-1-2">8.1.2. Basic configuration example</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-2">8.2. git</a></li>
+<li><a href="#sec-8-3">8.3. tmux</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Presentation of me:</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Who I am?
+</li>
+<li>My contacts:
+<ol class="org-ol">
+<li>andrea.miglietta92@gmail.com
+</li>
+<li>andreatsh@lcm.mi.infn.it
+</li>
+</ol>
+</li>
+<li>GitHub: <a href="https://github.com/andreatsh/openlab">https://github.com/andreatsh/openlab</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Goals of this conference:</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Why using command line?
+Why bother?
+Why do I have to waste my time to learn command line?
+</p>
+
+<p>
+When you realize that you spend most of your time doing repetitive tasks, you
+could suspect you are not doing things quite well. What you want is a way to
+perform repetitive tasks with less typing and actions as possible.
+Stop waste your time with boring routine stuff!
+</p>
+
+<p>
+Moreover, you can have a good comprehension and a fine control of what you
+are actually doing. There are lots of tasks you can perfom easily with
+command line that in other way are particular complicated.
+If you do not believe it, try to implement a program (for example in C++)
+that:
+</p>
+<ul class="org-ul">
+<li>search all your files into a directory
+</li>
+<li>evaluate the disk space occupied by each file
+</li>
+<li>order by size the results
+</li>
+<li>print them on a file
+</li>
+</ul>
+
+<p>
+Once you have done, compare the time spent and the length of your code with
+this simple line:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">du -sh * | sort -nr &gt; file.results
+</pre>
+</div>
+<p>
+If you are not convinced yet, please teach me your way to code in C++!
+Seriously!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Quick review of things I'd like to assume you know:</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Open a terminal</h4>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Open a file with an editor of your choice</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+Choose your tools wisely and spend time to customize them.
+There are many text editor, some example:
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-3-2-1" name="sec-1-3-2-1"></a>Emacs, Vim<br  /><div class="outline-text-5" id="text-1-3-2-1">
+<p>
+Advanced and powerful editors. (Recommended)
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-2-2" name="sec-1-3-2-2"></a>Nano<br  /></li>
+<li><a id="sec-1-3-2-3" name="sec-1-3-2-3"></a>Gedit<br  /></li></ol>
+</div>
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Elementary commands:</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<ul class="org-ul">
+<li>cd
+</li>
+<li>ls
+</li>
+<li>cp
+</li>
+<li>mv
+</li>
+<li>rm
+</li>
+<li>mkdir
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Standard input, output and error</h4>
+<div class="outline-text-4" id="text-1-3-4">
+</div><ol class="org-ol"><li><a id="sec-1-3-4-1" name="sec-1-3-4-1"></a>&gt;<br  /><div class="outline-text-5" id="text-1-3-4-1">
+<p>
+Redirect stdout to a file.
+Creates the file if not present, otherwise overwrites it.
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-2" name="sec-1-3-4-2"></a>&gt;&gt;<br  /><div class="outline-text-5" id="text-1-3-4-2">
+<p>
+Redirect stdout to a file.
+Creates the file if not present, otherwise appends to it.
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-3" name="sec-1-3-4-3"></a>1&gt;<br  /><div class="outline-text-5" id="text-1-3-4-3">
+<p>
+Redirect stdout
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-4" name="sec-1-3-4-4"></a>1&gt;&gt;<br  /><div class="outline-text-5" id="text-1-3-4-4">
+<p>
+Redirect and append stdout
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-5" name="sec-1-3-4-5"></a>2&gt;<br  /><div class="outline-text-5" id="text-1-3-4-5">
+<p>
+Redirect stderr
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-6" name="sec-1-3-4-6"></a>2&gt;&gt;<br  /><div class="outline-text-5" id="text-1-3-4-6">
+<p>
+Redirect and append stderr
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-7" name="sec-1-3-4-7"></a>&amp;&gt;<br  /><div class="outline-text-5" id="text-1-3-4-7">
+<p>
+Redirect both stdout and stderr
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-8" name="sec-1-3-4-8"></a>2&gt;&amp;1<br  /><div class="outline-text-5" id="text-1-3-4-8">
+<p>
+Redirect both stdout and stderr
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-4-9" name="sec-1-3-4-9"></a>What is /dev/null?<br  /></li></ol>
+</div>
+<div id="outline-container-sec-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Difference between absolute and relative path</h4>
+</div>
+<div id="outline-container-sec-1-3-6" class="outline-4">
+<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> How to get help?</h4>
+<div class="outline-text-4" id="text-1-3-6">
+</div><ol class="org-ol"><li><a id="sec-1-3-6-1" name="sec-1-3-6-1"></a>man [command]<br  /><div class="outline-text-5" id="text-1-3-6-1">
+<p>
+Show the complete manual page of the command
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-6-2" name="sec-1-3-6-2"></a>&#x2013;help, -h<br  /><div class="outline-text-5" id="text-1-3-6-2">
+<p>
+These flags are provided by almost every commands and show the basic usage
+</p>
+</div>
+</li>
+<li><a id="sec-1-3-6-3" name="sec-1-3-6-3"></a>GIYF<br  /><div class="outline-text-5" id="text-1-3-6-3">
+<p>
+Google Is Your Friend
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> How can I improve my skills?</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+A lot of study and practice, practice and practice again!
+There are no other ways to gain confidence with command line.
+More confidence you have, less time you spend on silly routine tasks!
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Start learning Bash</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> What is Bash?</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Bash is a Unix shell and command language.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Why using Bash?</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Bash is the standard GNU shell. It's the default shell on most Linux
+distributions, so your script will virtually works everywhere.
+Bash is intuitive for beginner users and at the same time is a powerful tool
+for advavenced and professional users.
+</p>
+</div>
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> How to verify which shell you are using?</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+There are many shells available (bash, sh, zsh, ksh, fish, etc..).
+Typing commands for a shell when you are running another one can cause
+confusion, errors or unwanted behaviors.
+To identify your default shell open a terminal and type:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">echo "$SHELL"
+</pre>
+</div>
+<p>
+/bin/bash
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Bash scripting</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> What is a script?</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Shell scripts are interpreted, not compiled. So in few words, a shell script
+is just a sequence of instructions that the shell reads from the script line
+by line and executes them.
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-2-3-1-1" name="sec-2-3-1-1"></a>Shebang: #!<br  /></li></ol>
+</div>
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> How can I run my script?</h4>
+<div class="outline-text-4" id="text-2-3-2">
+</div><ol class="org-ol"><li><a id="sec-2-3-2-1" name="sec-2-3-2-1"></a>Make a file executable<br  /><div class="outline-text-5" id="text-2-3-2-1">
+<p>
+The permissions of a file granted to a user are:
+</p>
+<ul class="org-ul">
+<li>read (<b>r</b>)
+</li>
+<li>write (<b>w</b>)
+</li>
+<li>execute (<b>x</b>)
+</li>
+</ul>
+<p>
+You have to assign the execute attribute to your script:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">chmod +x script.sh
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> First step: Hello World!</h4>
+<div class="outline-text-4" id="text-2-3-3">
+</div><ol class="org-ol"><li><a id="sec-2-3-3-1" name="sec-2-3-3-1"></a>A simple "Hello World!"<br  /><div class="outline-text-5" id="text-2-3-3-1">
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/bin/bash
+echo "Hello World!"
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-2-3-3-2" name="sec-2-3-3-2"></a>Another simple "Hello World!"<br  /><div class="outline-text-5" id="text-2-3-3-2">
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/bin/bash
+# This is a variable
+HELLO="Hello World!"
+echo "$HELLO"
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-3-4" class="outline-4">
+<h4 id="sec-2-3-4"><span class="section-number-4">2.3.4</span> Why is important quoting variables?</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+It's a good practice to quote your variables.
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-2-3-4-1" name="sec-2-3-4-1"></a>Differences between using single quotes or double quotes<br  /><ol class="org-ol"><li><a id="sec-2-3-4-1-1" name="sec-2-3-4-1-1"></a>Example 1<br  /><div class="outline-text-6" id="text-2-3-4-1-1">
+<ul class="org-ul">
+<li>Single quotes example:
+<div class="org-src-container">
+
+<pre class="src src-sh">echo 'This is my $HOME'
+</pre>
+</div>
+<p>
+This is my $HOME
+</p>
+</li>
+<li>Double quotes example:
+<div class="org-src-container">
+
+<pre class="src src-sh">echo "This is my $HOME"
+</pre>
+</div>
+<p>
+This is my /home/andreatsh
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li><a id="sec-2-3-4-1-2" name="sec-2-3-4-1-2"></a>Example 2<br  /><div class="outline-text-6" id="text-2-3-4-1-2">
+<ul class="org-ul">
+<li>Single quotes:
+<div class="org-src-container">
+
+<pre class="src src-sh">[ '$HOME' =='/home/andreatsh' ] &amp;&amp; echo "Yuppi" || echo "Error"
+</pre>
+</div>
+<p>
+Error
+</p>
+</li>
+<li>Example with double quotes:
+<div class="org-src-container">
+
+<pre class="src src-sh">[ "$HOME" == "/home/andreatsh" ] &amp;&amp; echo "Yuppi" || echo "Error`"
+</pre>
+</div>
+<p>
+Yuppi
+</p>
+</li>
+</ul>
+</div>
+</li></ol>
+</li>
+<li><a id="sec-2-3-4-2" name="sec-2-3-4-2"></a>A bit more advanced example:<br  /><div class="outline-text-5" id="text-2-3-4-2">
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/bin/bash
+
+# Personal example of why quoting is important.
+# What output do you expect? You might be surprised.
+HELLO=Hello!; ls -l
+echo "$HELLO"
+
+# This is a script designed to learn, you can run it and nothing bad will
+# happen. But if you do not write your script with care and good practices
+# (even on-the-fly scripts) can do real damages!
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-3-5" class="outline-4">
+<h4 id="sec-2-3-5"><span class="section-number-4">2.3.5</span> Command substitutuion: backticks vs $()</h4>
+<div class="outline-text-4" id="text-2-3-5">
+</div><ol class="org-ol"><li><a id="sec-2-3-5-1" name="sec-2-3-5-1"></a>From Bash manual page:<br  /><div class="outline-text-5" id="text-2-3-5-1">
+<blockquote>
+<p>
+Command substitution allows the output of a command to replace the command
+name. There are two forms:
+</p>
+</blockquote>
+<p class="verse">
+&#xa0;&#xa0;&#xa0;&#xa0;$(command)<br  />
+or<br  />
+&#xa0;&#xa0;&#xa0;&#xa0;`command`<br  />
+</p>
+<blockquote>
+<p>
+Bash performs the expansion by executing command in a subshell environment
+and replacing the command substitution with the standard output of the
+command, with any trailing newlines deleted. Embedded newlines are not
+deleted, but they may be removed during word splitting.
+The command substitution $(cat file) can be  replaced by the equivalent but
+faster $(&lt; file). <br  />
+</p>
+
+<p>
+When the old-style backquote form of substitution is used, backslash retains
+its literal meaning except when followed by $, `, or \. The first backquote
+not preceded by a backslash terminates the command substitution. When using
+the $(command) form, all  characters between the parentheses make up the
+command; none are treated specially. <br  />
+</p>
+
+<p>
+Command substitutions may be nested. To nest when using the backquoted form,
+escape the inner backquotes with backslashes. <br  />
+</p>
+
+<p>
+If the substitution appears within double quotes, word splitting and
+pathname expansion are not performed on the results.
+</p>
+</blockquote>
+</div>
+</li>
+<li><a id="sec-2-3-5-2" name="sec-2-3-5-2"></a>Examples:<br  /><div class="outline-text-5" id="text-2-3-5-2">
+<ol class="org-ol">
+<li>Simple use of command substitutuions:
+<div class="org-src-container">
+
+<pre class="src src-sh">ex1=`echo ciao`;  echo "$ex1"
+ex1=$(echo ciao); echo "$ex1"
+</pre>
+</div>
+</li>
+<li>Nested command substitutions:
+<div class="org-src-container">
+
+<pre class="src src-sh">ex2=`echo `ls``; echo "$ex2"    # WRONG!
+ex2=`echo \`ls\``; echo "$ex2"  # RIGHT
+ex2=$(echo $(ls)); echo "$ex2"  # RIGHT
+</pre>
+</div>
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-2-3-6" class="outline-4">
+<h4 id="sec-2-3-6"><span class="section-number-4">2.3.6</span> Why is dangerous shell scripting?</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+Many reasons. An example is worth a thousand words:
+Example:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># This is an example of really bad code!
+MYDIR=
+rm -rf "$MYDIR/"*
+# MYDIR variable may not be defined or be an empty string for many reasons!
+# You just ran "rm -rf /*", maybe even as superuser!
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3-7" class="outline-4">
+<h4 id="sec-2-3-7"><span class="section-number-4">2.3.7</span> Use bashisms: use Bash, don't half-use it.</h4>
+<div class="outline-text-4" id="text-2-3-7">
+<ul class="org-ul">
+<li>parameters expansions
+</li>
+<li>local and readonly variables
+</li>
+<li>improved conditional expressions
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-8" class="outline-4">
+<h4 id="sec-2-3-8"><span class="section-number-4">2.3.8</span> How to debug a script:</h4>
+<div class="outline-text-4" id="text-2-3-8">
+<p>
+I'm used to write very carefully my script, even on-the-fly or one-time
+scripts. However, there is always something that could be have undesired
+behaviors. To debug my Bash script I find useful this way to proceed:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># Debug mode: ON
+set -x
+# ...
+# Your script goes here!
+# ...
+# Debug mode: OFF
+set +x
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> 7 personal advice to write a good script:</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+I summarize here the main recommendations that will be used in this
+document. I think it's a good habit to use them all the time, even just
+for single time scripts. A well documented, structered and organized,
+versioned collection of scripts will bring you many benefits over time.
+</p>
+
+<ol class="org-ol">
+<li>Comment your code!
+Use comments to explain why are you doing something more than what
+you are doing, and write them in english! Do not underestimate the
+importance of english in writing code! You don't write production
+scripts for yourself! The whole team need to understand what you have
+done and why.
+</li>
+
+<li>Choose descriptive names for variables and functions!
+</li>
+
+<li>Try to write reliable and reusable code.
+In this way is easier to make changes and updates without break the
+application, and you can rearrange in a jiffy functions to fit your
+temporary needs instead of rewrite code from scratch.
+</li>
+
+<li>Don't use a complex construct where a simpler one will do.
+Complex construct are difficult to understand and decrease readability.
+</li>
+
+<li>Break complex scripts into simpler modules. Use functions where appropriate.
+</li>
+
+<li>Log what your script is doing!
+Make sure to always known what your scripts are doing.
+In my experience the correct way is to use standard error for logging,
+so you can redirect your simulation's output (i.e. your data) into a file
+without mix them with useful (and hopefully verbose) log messages.
+</li>
+
+<li>Last but not least: Keep your code under versioning!
+This is really important to me! Personally I keep under versioning even
+my filesystem configurations directories, like those in /etc.
+Making mistakes or having unwanted behavior is easy with shell scripts,
+as we will see soon in this document. A repository is really usefull to
+review your code and have structured logs of what you have done and
+bugs fixed.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> One step further: how to schedule our operations</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+It's often useful run a script periodically, to do some cleanup, monitor a
+simulation, or backup your files. To take efficiency one step further, it
+would be nice if we could not sit in front of our computers and run these
+scritps manually. You can get this job done by using cron or systemd-timers.
+Here is a brief introduction to these topics.
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Cron:</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> What is cron?</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+<i>cron</i> is a daemon to execute scheduled commands.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> How can I schedule use cron?</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Each user can have his own crontab file in <i>var/spool/cron/crontabs</i>,
+which can be created/modified/removed by <i>crontab</i> command.
+The crontab file should not be accessed directly, the <i>crontab</i> command
+should be used to access and update it.
+To edit (or create) your crontab:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">crontab -e
+</pre>
+</div>
+<p>
+To list your current crontab:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">crontab -l
+</pre>
+</div>
+<p>
+Use 'man cron' and 'man crontab' to find all the documentation you need.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Systemd timers:</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+This is an advanced topic for this conference. If you don't know what SystemD is, don't worry,
+you can skip this part without losing anything.
+</p>
+</div>
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> What is a systemd timer?</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+Timers are systemd unit files with a suffix of <i>.timer</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> How can I create a timer?</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Let's say you have a script you want to run every hour.
+In <i>$HOME/</i>.config/systemd/user/ you have to create two files: one is the
+the service file, the other is the timer file.
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-3-2-2-1" name="sec-3-2-2-1"></a>Create a service file<br  /><div class="outline-text-5" id="text-3-2-2-1">
+<p>
+We start creating a test.service file like this:
+</p>
+<pre class="example">
+[Unit]
+Description=Simple test script
+
+[Service]
+Type=simple
+ExecStart=/home/andreatsh/bin/test.sh
+</pre>
+</div>
+</li>
+<li><a id="sec-3-2-2-2" name="sec-3-2-2-2"></a>Create a timer file<br  /><div class="outline-text-5" id="text-3-2-2-2">
+<p>
+Now we create test.timer file:
+</p>
+<pre class="example">
+[Unit]
+Description=Runs every minute
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=*:0/1
+Unit=test.service
+
+[Install]
+WantedBy=timers.target
+</pre>
+</div>
+</li>
+<li><a id="sec-3-2-2-3" name="sec-3-2-2-3"></a>Enable/Start service and timer<br  /><div class="outline-text-5" id="text-3-2-2-3">
+<div class="org-src-container">
+
+<pre class="src src-bash">systemctl --user enable testscript.timer
+systemctl --user start testscript.timer
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Exercises:</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li>Find a way to check periodically (for example every hour) your available
+disk space and send the result via email. For example, if your simulation
+do an heavy i/o on disk and you have a limited disk quota it's a good
+habit monitor it.
+Difficulty: Basic
+Estimated time to complete task: ~ 1 minute
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> How to 'rename' large number of files?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+I have a large number of file I want to rename them,
+I can do that in a easy and fast way?
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">#!/bin/bash
+# Debian/Ubuntu version
+rename 's/pattern/replacement/' files
+# Fedora/CentOS version
+rename pattern replacement files
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> How to 'find' and do operations over multiple files?</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-bash">for i in $(ls);
+do
+  # Do something ..
+done
+</pre>
+</div>
+<p>
+You don't have control on the output, ls does not distinguish between regular
+file or directory, or files with different permission.
+Sure, you can use a more complex command like
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">for i in $(ls -l | awk '/^-rwx-rw--x/{print $9}');
+do
+  # Do something ..
+done
+</pre>
+</div>
+<p>
+but is it worth? This is not an efficient way to do loop over file.
+It's always better use appropriate tools: for example I prefer a syntax like:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">find /path/to/dir -type f -exec touch {} \;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Text processing by examples: awk</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Awk is a really useful tool for text processing. If you have to easily
+manipulate data organized in columns, strange format, or rearrange data
+based on pattern this is for you.
+Here you can find some basic examples that in my opinion show how much
+intuitive and powerful Awk is.
+These examples are deliberately more idiomatic than those that often you can
+learn from standard manuals, they want to be hints on how to write shorter
+and sometimes more efficient Awk programs.
+</p>
+</div>
+<div id="outline-container-sec-6-0-1" class="outline-4">
+<h4 id="sec-6-0-1"><span class="section-number-4">6.0.1</span> The worst thing you can do with Awk! (imho)</h4>
+<div class="outline-text-4" id="text-6-0-1">
+<p>
+Suppose we want to read a file line-by-line, and we want to print the
+second column. You might be tempted to do something like:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># Example of bad code!
+while IFS= read -r line; do
+    echo "$line" | awk '{ print $2 }'
+done &lt; file
+</pre>
+</div>
+<p>
+Why this is not a good idea? Awk is designed and optimized to read a file
+line-by-line and do operations on these lines. In this case you are calling
+an instance of Awk for each line of your file, it's a waste of resources and
+time! If you have to cut ten onions you take the knife, cut all the onions
+and then you wash the knife and put it away; in this case you are washing
+and putting the knife away after you have cut every single onion.
+The right way to do this task is:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">awk '{ print $2 }' file
+</pre>
+</div>
+<p>
+Note: Whenever is possible avoid loops in Bash!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6-0-2" class="outline-4">
+<h4 id="sec-6-0-2"><span class="section-number-4">6.0.2</span> Print lines based on pattern</h4>
+<div class="outline-text-4" id="text-6-0-2">
+<p>
+Let's say we simply want to print all lines in a file that match a pattern.
+Our first attempt might be something like that:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">awk '{ if( $0 ~ /pattern/ ) print $0 }' file
+</pre>
+</div>
+<p>
+This code works, but we can go further. If this is not the first time you
+use Awk, you know it works by definition in this way:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">awk ' CONDITION_1 { ACTION_1 } ... CONDITION_N { ACTION_N} ' file
+</pre>
+</div>
+<p>
+So the previous one-liner become:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">awk ' $0 ~ /pattern/ { print $0 }' file
+</pre>
+</div>
+<p>
+But it's not enough! We also know from theory that every regular expression
+is implicitly applied by Awk to $0; moreover, we know the default action
+applied to a true condition without specified actions is 'print' ($0 is a
+redundant option since 'print' alone by default print '$0').
+I omit all these working intermidiate steps and come to the point:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># This command emulates 'grep'
+awk '/pattern/' file
+</pre>
+</div>
+<p>
+Really more readable and typing saving than our first try.
+</p>
+
+<p>
+And if you want to print all lines that does not match a pattern:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># This command emulates 'grep -v'
+awk '!/pattern/' file
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="sec-6-0-2-1" name="sec-6-0-2-1"></a>Exercises:<br  /><div class="outline-text-5" id="text-6-0-2-1">
+<ol class="org-ol">
+<li>Print lines that match both pattern1 AND pattern2
+</li>
+<li>Print lines that match pattern1 BUT NOT pattern2
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-6-0-3" class="outline-4">
+<h4 id="sec-6-0-3"><span class="section-number-4">6.0.3</span> Print lines in range</h4>
+<div class="outline-text-4" id="text-6-0-3">
+<div class="org-src-container">
+
+<pre class="src src-bash"># NR: The total number of input records seen so far.
+# Print from line 3 to line 7 (inclusive)
+awk 'NR==3,NR==7'
+
+# Print lines between to regular expression (inclusive)
+awk '/beginregex/,/endregex/'
+
+# Print lines between to regular expression (not inclusive)
+awk '/endregex/{p=0}; p; /beginregex/{p=1}/
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="sec-6-0-3-1" name="sec-6-0-3-1"></a>Exercises:<br  /><div class="outline-text-5" id="text-6-0-3-1">
+<ol class="org-ol">
+<li>Print lines from beginregex to endregex, excluding beginregex.
+</li>
+<li>Print lines from beginregex to endregex, excluding endregex.
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-6-0-4" class="outline-4">
+<h4 id="sec-6-0-4"><span class="section-number-4">6.0.4</span> Remove (non consecutive) duplicated lines</h4>
+<div class="outline-text-4" id="text-6-0-4">
+<div class="org-src-container">
+
+<pre class="src src-bash">awk '!z[$0]++' file
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="sec-6-0-4-1" name="sec-6-0-4-1"></a>Exercises:<br  /><div class="outline-text-5" id="text-6-0-4-1">
+<ol class="org-ol">
+<li>Remove duplicated lines only if these lines are consecutive.
+(Emulates uniq command)
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-6-0-5" class="outline-4">
+<h4 id="sec-6-0-5"><span class="section-number-4">6.0.5</span> Find and replace</h4>
+<div class="outline-text-4" id="text-6-0-5">
+<div class="org-src-container">
+
+<pre class="src src-bash"># Find and replace only the first occurrence
+awk '{sub("pattern","replacement")} 1'
+# Find and replace all occurrences
+awk '{gsub("pattern","replacement")} 1'
+</pre>
+</div>
+</div>
+<ol class="org-ol"><li><a id="sec-6-0-5-1" name="sec-6-0-5-1"></a>Exercises:<br  /><div class="outline-text-5" id="text-6-0-5-1">
+<ol class="org-ol">
+<li>Print only the lines where a replacement occurs.
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-6-0-6" class="outline-4">
+<h4 id="sec-6-0-6"><span class="section-number-4">6.0.6</span> Print intersection of two files</h4>
+<div class="outline-text-4" id="text-6-0-6">
+<p>
+This is a really common and powerful construct in Awk.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash"># Print only the lines that are both in file1 and file2
+awk 'FNR==NR{ z[$0]++; next } $0 in z' file1 file2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6-0-7" class="outline-4">
+<h4 id="sec-6-0-7"><span class="section-number-4">6.0.7</span> Parse a CSV file</h4>
+<div class="outline-text-4" id="text-6-0-7">
+<div class="org-src-container">
+
+<pre class="src src-bash"># With the flag -F you can set the Input Field Separator (IFS)
+# If the separator is comma "," you can write something like:
+awk -F, '{ print $1,$3 }' file.csv
+
+NOTE: In this case we have set IFS=, but when we print, as you already know,
+there are spaces between fields and not commas! This is not desirable if we,
+after some manipulation, want to have again a csv file as output.
+Sure, we can print explicitly all commas:
+awk -F, '{ print $1","$3 }' file.csv
+
+# However, this is not a good solution.
+# In many situation is preferable set the Output Field Separator (OFS):
+awk -F, '{ print $1,$3 }' OFS=, file.csv
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Project example: dice rolling simulations</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+I choose this example because it's simple and everyone has experience of
+dice rolling; moreover, I write the program in C++ because there are several
+courses that cover this language and I hope you are familiar with it.
+The C++ code I wrote is straightforward, so you can focus on:
+</p>
+<ul class="org-ul">
+<li>how to pass different arguments to a program
+</li>
+<li>how to redirect program's output to specific files
+</li>
+<li>how to manipulate output files
+</li>
+</ul>
+
+<p>
+You can find the program's code in the <i>project:dice</i> subfolder of this seminar
+repository. Compile. Run. An usage message should be returned:
+Usage: ./dice &lt;dice number&gt; &lt;faces number&gt; &lt;rolls number&gt;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Not covered by this talk but truly useful and important:</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> ssh</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Some tips to improve your experience.
+</p>
+</div>
+<div id="outline-container-sec-8-1-1" class="outline-4">
+<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> Generate public/private key pair for authentication</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+You can generate SSH keys with the command:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">ssh-keygen
+</pre>
+</div>
+<p>
+Once you have a key pair you have to append your public key in the file
+'~/.ssh/authorized<sub>keys'</sub> on your remote host, you can do it manually or with
+the command:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">ssh-copy-id -i ~/.ssh/id_rsa.pub user@domain
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-1-2" class="outline-4">
+<h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> Basic configuration example</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<p>
+Create file ~/.ssh/config (or edit it if you already have one).
+A basic configuration file looks like:
+</p>
+<pre class="example">
+Host *
+ControlMaster auto
+ControlPath ~/.ssh/master-%r@%h:%p
+
+Host mylab
+Hostname mylab.example
+User mylogin
+CheckHostIP no
+Compression yes
+Protocol 2
+</pre>
+<p>
+From now on, when you want to open a connection via ssh just type:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">ssh mylab
+</pre>
+</div>
+<p>
+When you connect the first time ControlMaster create a socket and from the
+second time you don't need to reinsert your password or key's passphrase (if
+you have set one). Note that you can configure multiple hosts and add or
+remove options as you like to fit your needs.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> git</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+Love it! Never again without!
+I truly recommend you to inform on this irreplaceable tool!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> tmux</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+Tmux is a terminal multiplexer.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017.05.10</p>
+<p class="author">Author: Andrea Miglietta</p>
+<p class="date">Created: 2017-05-10 Wed 14:42</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,549 @@
+#+TITLE:  OpenLab: open tools for physicists
+#+AUTHOR: Andrea Miglietta
+#+EMAIL:  andrea.miglietta92@gmail.com
+#+DATE:   2017.05.10
+
+* Introduction
+** Presentation of me:
+   - Who I am?
+   - My contacts:
+      1. andrea.miglietta92@gmail.com
+      2. andreatsh@lcm.mi.infn.it
+   - GitHub: https://github.com/andreatsh/openlab
+** Goals of this conference:
+   Why using command line?
+   Why bother?
+   Why do I have to waste my time to learn command line?
+
+   When you realize that you spend most of your time doing repetitive tasks, you
+   could suspect you are not doing things quite well. What you want is a way to
+   perform repetitive tasks with less typing and actions as possible.
+   Stop waste your time with boring routine stuff!
+
+   Moreover, you can have a good comprehension and a fine control of what you
+   are actually doing. There are lots of tasks you can perfom easily with
+   command line that in other way are particular complicated.
+   If you do not believe it, try to implement a program (for example in C++)
+   that:
+   - search all your files into a directory
+   - evaluate the disk space occupied by each file
+   - order by size the results
+   - print them on a file
+
+   Once you have done, compare the time spent and the length of your code with
+   this simple line:
+   #+BEGIN_SRC bash
+   du -sh * | sort -nr > file.results
+   #+END_SRC
+   If you are not convinced yet, please teach me your way to code in C++!
+   Seriously!
+** Quick review of things I'd like to assume you know:
+*** Open a terminal
+*** Open a file with an editor of your choice
+    Choose your tools wisely and spend time to customize them.
+    There are many text editor, some example:
+**** Emacs, Vim
+     Advanced and powerful editors. (Recommended)
+**** Nano
+**** Gedit
+*** Elementary commands:
+    - cd
+    - ls
+    - cp
+    - mv
+    - rm
+    - mkdir
+*** Standard input, output and error
+**** >
+     Redirect stdout to a file.
+     Creates the file if not present, otherwise overwrites it.
+**** >>
+     Redirect stdout to a file.
+     Creates the file if not present, otherwise appends to it.
+**** 1>
+     Redirect stdout
+**** 1>>
+     Redirect and append stdout
+**** 2>
+     Redirect stderr
+**** 2>>
+     Redirect and append stderr
+**** &>
+     Redirect both stdout and stderr
+**** 2>&1
+     Redirect both stdout and stderr
+**** What is /dev/null?
+*** Difference between absolute and relative path
+*** How to get help?
+**** man [command]
+     Show the complete manual page of the command
+**** --help, -h
+     These flags are provided by almost every commands and show the basic usage
+**** GIYF
+     Google Is Your Friend
+** How can I improve my skills?
+   A lot of study and practice, practice and practice again!
+   There are no other ways to gain confidence with command line.
+   More confidence you have, less time you spend on silly routine tasks!
+* Start learning Bash
+** What is Bash?
+   Bash is a Unix shell and command language.
+** Why using Bash?
+   Bash is the standard GNU shell. It's the default shell on most Linux
+   distributions, so your script will virtually works everywhere.
+   Bash is intuitive for beginner users and at the same time is a powerful tool
+   for advavenced and professional users.
+*** How to verify which shell you are using?
+    There are many shells available (bash, sh, zsh, ksh, fish, etc..).
+    Typing commands for a shell when you are running another one can cause
+    confusion, errors or unwanted behaviors.
+    To identify your default shell open a terminal and type:
+    #+BEGIN_SRC bash
+    echo "$SHELL"
+    #+END_SRC
+    /bin/bash
+** Bash scripting
+*** What is a script?
+    Shell scripts are interpreted, not compiled. So in few words, a shell script
+    is just a sequence of instructions that the shell reads from the script line
+    by line and executes them.
+**** Shebang: #!
+*** How can I run my script?
+**** Make a file executable
+     The permissions of a file granted to a user are:
+     - read (*r*)
+     - write (*w*)
+     - execute (*x*)
+     You have to assign the execute attribute to your script:
+     #+BEGIN_SRC bash
+     chmod +x script.sh
+     #+END_SRC
+*** First step: Hello World!
+**** A simple "Hello World!"
+     #+BEGIN_SRC bash
+     #!/bin/bash
+     echo "Hello World!"
+     #+END_SRC
+**** Another simple "Hello World!"
+     #+BEGIN_SRC bash
+     #!/bin/bash
+     # This is a variable
+     HELLO="Hello World!"
+     echo "$HELLO"
+     #+END_SRC
+*** Why is important quoting variables?
+    It's a good practice to quote your variables.
+**** Differences between using single quotes or double quotes
+***** Example 1
+      - Single quotes example:
+        #+BEGIN_SRC sh
+        echo 'This is my $HOME'
+        #+END_SRC
+        This is my $HOME
+      - Double quotes example:
+        #+BEGIN_SRC sh
+        echo "This is my $HOME"
+        #+END_SRC
+        This is my /home/andreatsh
+***** Example 2
+      - Single quotes:
+        #+BEGIN_SRC sh
+        [ '$HOME' =='/home/andreatsh' ] && echo "Yuppi" || echo "Error"
+        #+END_SRC
+        Error
+      - Example with double quotes:
+        #+BEGIN_SRC sh
+        [ "$HOME" == "/home/andreatsh" ] && echo "Yuppi" || echo "Error`"
+        #+END_SRC
+        Yuppi
+**** A bit more advanced example:
+     #+BEGIN_SRC bash
+     #!/bin/bash
+
+     # Personal example of why quoting is important.
+     # What output do you expect? You might be surprised.
+     HELLO=Hello!; ls -l
+     echo "$HELLO"
+
+     # This is a script designed to learn, you can run it and nothing bad will
+     # happen. But if you do not write your script with care and good practices
+     # (even on-the-fly scripts) can do real damages!
+     #+END_SRC
+*** Command substitutuion: backticks vs $()
+**** From Bash manual page:
+     #+BEGIN_QUOTE
+     Command substitution allows the output of a command to replace the command
+     name. There are two forms:
+     #+END_QUOTE
+     #+BEGIN_VERSE
+         $(command)
+     or
+         `command`
+     #+END_VERSE
+     #+BEGIN_QUOTE
+     Bash performs the expansion by executing command in a subshell environment
+     and replacing the command substitution with the standard output of the
+     command, with any trailing newlines deleted. Embedded newlines are not
+     deleted, but they may be removed during word splitting.
+     The command substitution $(cat file) can be  replaced by the equivalent but
+     faster $(< file). \\
+
+     When the old-style backquote form of substitution is used, backslash retains
+     its literal meaning except when followed by $, `, or \. The first backquote
+     not preceded by a backslash terminates the command substitution. When using
+     the $(command) form, all  characters between the parentheses make up the
+     command; none are treated specially. \\
+
+     Command substitutions may be nested. To nest when using the backquoted form,
+     escape the inner backquotes with backslashes. \\
+
+     If the substitution appears within double quotes, word splitting and
+     pathname expansion are not performed on the results.
+     #+END_QUOTE
+**** Examples:
+     1. Simple use of command substitutuions:
+        #+BEGIN_SRC sh
+        ex1=`echo ciao`;  echo "$ex1"
+        ex1=$(echo ciao); echo "$ex1"
+        #+END_SRC
+     2. Nested command substitutions:
+        #+BEGIN_SRC sh
+        ex2=`echo `ls``; echo "$ex2"    # WRONG!
+        ex2=`echo \`ls\``; echo "$ex2"  # RIGHT
+        ex2=$(echo $(ls)); echo "$ex2"  # RIGHT
+        #+END_SRC
+*** Why is dangerous shell scripting?
+    Many reasons. An example is worth a thousand words:
+    Example:
+    #+BEGIN_SRC bash
+    # This is an example of really bad code!
+    MYDIR=
+    rm -rf "$MYDIR/"*
+    # MYDIR variable may not be defined or be an empty string for many reasons!
+    # You just ran "rm -rf /*", maybe even as superuser!
+    #+END_SRC
+*** Use bashisms: use Bash, don't half-use it.
+    - parameters expansions
+    - local and readonly variables
+    - improved conditional expressions
+*** How to debug a script:
+    I'm used to write very carefully my script, even on-the-fly or one-time
+    scripts. However, there is always something that could be have undesired
+    behaviors. To debug my Bash script I find useful this way to proceed:
+    #+BEGIN_SRC bash
+    # Debug mode: ON
+    set -x
+    # ...
+    # Your script goes here!
+    # ...
+    # Debug mode: OFF
+    set +x
+    #+END_SRC
+** 7 personal advice to write a good script:
+   I summarize here the main recommendations that will be used in this
+   document. I think it's a good habit to use them all the time, even just
+   for single time scripts. A well documented, structered and organized,
+   versioned collection of scripts will bring you many benefits over time.
+
+   1. Comment your code!
+      Use comments to explain why are you doing something more than what
+      you are doing, and write them in english! Do not underestimate the
+      importance of english in writing code! You don't write production
+      scripts for yourself! The whole team need to understand what you have
+      done and why.
+
+   2. Choose descriptive names for variables and functions!
+
+   3. Try to write reliable and reusable code.
+      In this way is easier to make changes and updates without break the
+      application, and you can rearrange in a jiffy functions to fit your
+      temporary needs instead of rewrite code from scratch.
+
+   4. Don't use a complex construct where a simpler one will do.
+      Complex construct are difficult to understand and decrease readability.
+
+   5. Break complex scripts into simpler modules. Use functions where appropriate.
+
+   6. Log what your script is doing!
+      Make sure to always known what your scripts are doing.
+      In my experience the correct way is to use standard error for logging,
+      so you can redirect your simulation's output (i.e. your data) into a file
+      without mix them with useful (and hopefully verbose) log messages.
+
+   7. Last but not least: Keep your code under versioning!
+      This is really important to me! Personally I keep under versioning even
+      my filesystem configurations directories, like those in /etc.
+      Making mistakes or having unwanted behavior is easy with shell scripts,
+      as we will see soon in this document. A repository is really usefull to
+      review your code and have structured logs of what you have done and
+      bugs fixed.
+* One step further: how to schedule our operations
+  It's often useful run a script periodically, to do some cleanup, monitor a
+  simulation, or backup your files. To take efficiency one step further, it
+  would be nice if we could not sit in front of our computers and run these
+  scritps manually. You can get this job done by using cron or systemd-timers.
+  Here is a brief introduction to these topics.
+** Cron:
+*** What is cron?
+    /cron/ is a daemon to execute scheduled commands.
+*** How can I schedule use cron?
+    Each user can have his own crontab file in /var/spool/cron/crontabs/,
+    which can be created/modified/removed by /crontab/ command.
+    The crontab file should not be accessed directly, the /crontab/ command
+    should be used to access and update it.
+    To edit (or create) your crontab:
+    #+BEGIN_SRC bash
+    crontab -e
+    #+END_SRC
+    To list your current crontab:
+    #+BEGIN_SRC bash
+    crontab -l
+    #+END_SRC
+    Use 'man cron' and 'man crontab' to find all the documentation you need.
+** Systemd timers:
+   This is an advanced topic for this conference. If you don't know what SystemD is, don't worry,
+   you can skip this part without losing anything.
+*** What is a systemd timer?
+    Timers are systemd unit files with a suffix of /.timer/.
+*** How can I create a timer?
+    Let's say you have a script you want to run every hour.
+    In /$HOME//.config/systemd/user/ you have to create two files: one is the
+    the service file, the other is the timer file.
+**** Create a service file
+     We start creating a test.service file like this:
+     #+BEGIN_SRC
+     [Unit]
+     Description=Simple test script
+
+     [Service]
+     Type=simple
+     ExecStart=/home/andreatsh/bin/test.sh
+     #+END_SRC
+**** Create a timer file
+     Now we create test.timer file:
+     #+BEGIN_SRC
+     [Unit]
+     Description=Runs every minute
+     RefuseManualStart=no
+     RefuseManualStop=no
+
+     [Timer]
+     OnCalendar=*:0/1
+     Unit=test.service
+
+     [Install]
+     WantedBy=timers.target
+     #+END_SRC
+**** Enable/Start service and timer
+     #+BEGIN_SRC bash
+     systemctl --user enable testscript.timer
+     systemctl --user start testscript.timer
+     #+END_SRC
+** Exercises:
+   1. Find a way to check periodically (for example every hour) your available
+      disk space and send the result via email. For example, if your simulation
+      do an heavy i/o on disk and you have a limited disk quota it's a good
+      habit monitor it.
+      Difficulty: Basic
+      Estimated time to complete task: ~ 1 minute
+* How to 'rename' large number of files?
+  I have a large number of file I want to rename them,
+  I can do that in a easy and fast way?
+  #+BEGIN_SRC bash
+  #!/bin/bash
+  # Debian/Ubuntu version
+  rename 's/pattern/replacement/' files
+  # Fedora/CentOS version
+  rename pattern replacement files
+  #+END_SRC
+* How to 'find' and do operations over multiple files?
+  #+BEGIN_SRC bash
+  for i in $(ls);
+  do
+    # Do something ..
+  done
+  #+END_SRC
+  You don't have control on the output, ls does not distinguish between regular
+  file or directory, or files with different permission.
+  Sure, you can use a more complex command like
+  #+BEGIN_SRC bash
+  for i in $(ls -l | awk '/^-rwx-rw--x/{print $9}');
+  do
+    # Do something ..
+  done
+  #+END_SRC
+  but is it worth? This is not an efficient way to do loop over file.
+  It's always better use appropriate tools: for example I prefer a syntax like:
+  #+BEGIN_SRC bash
+  find /path/to/dir -type f -exec touch {} \;
+  #+END_SRC
+* Text processing by examples: awk
+   Awk is a really useful tool for text processing. If you have to easily
+   manipulate data organized in columns, strange format, or rearrange data
+   based on pattern this is for you.
+   Here you can find some basic examples that in my opinion show how much
+   intuitive and powerful Awk is.
+   These examples are deliberately more idiomatic than those that often you can
+   learn from standard manuals, they want to be hints on how to write shorter
+   and sometimes more efficient Awk programs.
+*** The worst thing you can do with Awk! (imho)
+    Suppose we want to read a file line-by-line, and we want to print the
+    second column. You might be tempted to do something like:
+    #+BEGIN_SRC bash
+    # Example of bad code!
+    while IFS= read -r line; do
+        echo "$line" | awk '{ print $2 }'
+    done < file
+    #+END_SRC
+    Why this is not a good idea? Awk is designed and optimized to read a file
+    line-by-line and do operations on these lines. In this case you are calling
+    an instance of Awk for each line of your file, it's a waste of resources and
+    time! If you have to cut ten onions you take the knife, cut all the onions
+    and then you wash the knife and put it away; in this case you are washing
+    and putting the knife away after you have cut every single onion.
+    The right way to do this task is:
+    #+BEGIN_SRC bash
+    awk '{ print $2 }' file
+    #+END_SRC
+    Note: Whenever is possible avoid loops in Bash!
+*** Print lines based on pattern
+    Let's say we simply want to print all lines in a file that match a pattern.
+    Our first attempt might be something like that:
+    #+BEGIN_SRC bash
+    awk '{ if( $0 ~ /pattern/ ) print $0 }' file
+    #+END_SRC
+    This code works, but we can go further. If this is not the first time you
+    use Awk, you know it works by definition in this way:
+    #+BEGIN_SRC bash
+    awk ' CONDITION_1 { ACTION_1 } ... CONDITION_N { ACTION_N} ' file
+    #+END_SRC
+    So the previous one-liner become:
+    #+BEGIN_SRC bash
+    awk ' $0 ~ /pattern/ { print $0 }' file
+    #+END_SRC
+    But it's not enough! We also know from theory that every regular expression
+    is implicitly applied by Awk to $0; moreover, we know the default action
+    applied to a true condition without specified actions is 'print' ($0 is a
+    redundant option since 'print' alone by default print '$0').
+    I omit all these working intermidiate steps and come to the point:
+    #+BEGIN_SRC bash
+    # This command emulates 'grep'
+    awk '/pattern/' file
+    #+END_SRC
+    Really more readable and typing saving than our first try.
+
+    And if you want to print all lines that does not match a pattern:
+    #+BEGIN_SRC bash
+    # This command emulates 'grep -v'
+    awk '!/pattern/' file
+    #+END_SRC
+**** Exercises:
+     1. Print lines that match both pattern1 AND pattern2
+     2. Print lines that match pattern1 BUT NOT pattern2
+*** Print lines in range
+    #+BEGIN_SRC bash
+     # NR: The total number of input records seen so far.
+     # Print from line 3 to line 7 (inclusive)
+     awk 'NR==3,NR==7'
+
+     # Print lines between to regular expression (inclusive)
+     awk '/beginregex/,/endregex/'
+
+     # Print lines between to regular expression (not inclusive)
+     awk '/endregex/{p=0}; p; /beginregex/{p=1}/
+    #+END_SRC
+**** Exercises:
+     1. Print lines from beginregex to endregex, excluding beginregex.
+     2. Print lines from beginregex to endregex, excluding endregex.
+*** Remove (non consecutive) duplicated lines
+    #+BEGIN_SRC bash
+    awk '!z[$0]++' file
+    #+END_SRC
+**** Exercises:
+     1. Remove duplicated lines only if these lines are consecutive.
+        (Emulates uniq command)
+*** Find and replace
+    #+BEGIN_SRC bash
+    # Find and replace only the first occurrence
+    awk '{sub("pattern","replacement")} 1'
+    # Find and replace all occurrences
+    awk '{gsub("pattern","replacement")} 1'
+    #+END_SRC
+**** Exercises:
+     1. Print only the lines where a replacement occurs.
+*** Print intersection of two files
+    This is a really common and powerful construct in Awk.
+    #+BEGIN_SRC bash
+    # Print only the lines that are both in file1 and file2
+    awk 'FNR==NR{ z[$0]++; next } $0 in z' file1 file2
+    #+END_SRC
+*** Parse a CSV file
+    #+BEGIN_SRC bash
+    # With the flag -F you can set the Input Field Separator (IFS)
+    # If the separator is comma "," you can write something like:
+    awk -F, '{ print $1,$3 }' file.csv
+
+    NOTE: In this case we have set IFS=, but when we print, as you already know,
+    there are spaces between fields and not commas! This is not desirable if we,
+    after some manipulation, want to have again a csv file as output.
+    Sure, we can print explicitly all commas:
+    awk -F, '{ print $1","$3 }' file.csv
+
+    # However, this is not a good solution.
+    # In many situation is preferable set the Output Field Separator (OFS):
+    awk -F, '{ print $1,$3 }' OFS=, file.csv
+    #+END_SRC
+* Project example: dice rolling simulations
+  I choose this example because it's simple and everyone has experience of
+  dice rolling; moreover, I write the program in C++ because there are several
+  courses that cover this language and I hope you are familiar with it.
+  The C++ code I wrote is straightforward, so you can focus on:
+  - how to pass different arguments to a program
+  - how to redirect program's output to specific files
+  - how to manipulate output files
+
+  You can find the program's code in the /project:dice/ subfolder of this seminar
+  repository. Compile. Run. An usage message should be returned:
+  Usage: ./dice <dice number> <faces number> <rolls number>
+* Not covered by this talk but truly useful and important:
+** ssh
+   Some tips to improve your experience.
+*** Generate public/private key pair for authentication
+    You can generate SSH keys with the command:
+    #+BEGIN_SRC bash
+    ssh-keygen
+    #+END_SRC
+    Once you have a key pair you have to append your public key in the file
+    '~/.ssh/authorized_keys' on your remote host, you can do it manually or with
+    the command:
+    #+BEGIN_SRC bash
+    ssh-copy-id -i ~/.ssh/id_rsa.pub user@domain
+    #+END_SRC
+*** Basic configuration example
+    Create file ~/.ssh/config (or edit it if you already have one).
+    A basic configuration file looks like:
+    #+BEGIN_SRC
+    Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r@%h:%p
+
+    Host mylab
+    Hostname mylab.example
+    User mylogin
+    CheckHostIP no
+    Compression yes
+    Protocol 2
+    #+END_SRC
+    From now on, when you want to open a connection via ssh just type:
+    #+BEGIN_SRC bash
+    ssh mylab
+    #+END_SRC
+    When you connect the first time ControlMaster create a socket and from the
+    second time you don't need to reinsert your password or key's passphrase (if
+    you have set one). Note that you can configure multiple hosts and add or
+    remove options as you like to fit your needs.
+** git
+   Love it! Never again without!
+   I truly recommend you to inform on this irreplaceable tool!
+** tmux
+   Tmux is a terminal multiplexer.
